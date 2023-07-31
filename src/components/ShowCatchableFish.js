@@ -1,7 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux'
 import { getAllFish } from '../features/fish/fishSlice'
 import { useEffect } from 'react'
-import { all } from 'axios'
 
 const ShowCatchableFish = () => {
     const { allFish, isLoading } = useSelector((state) => state.fish)
@@ -80,19 +79,18 @@ const ShowCatchableFish = () => {
         }
     }
 
-    return <div>Display array of catchable fish here: {catchableFish}</div>
+    const renderFish = () => {
+        catchableFish.map((fish) => {
+            console.log(allFish[fish].icon_uri)
+            return (
+                <div>
+                    <p>{fish}</p>
+                    <img src={allFish[fish].icon_uri} alt="fish icon" />
+                </div>
+            )
+        })
+    }
+
+    return renderFish()
 }
 export default ShowCatchableFish
-
-//     //Loop through array of fish
-//     for (let i = 0; 1 <= fishArr; i++) {
-//         if (
-//             fishArr[i].availability.isAllDay === true &&
-//             fishArr[i].availability.isAllYear === true
-//         ) {
-//             // state.catchableFish.push(fishArr[i][1])
-//             console.log(fishArr[i])
-//         }
-//     }
-//     //check is availability.isavailable all Day or all year is true
-// }
