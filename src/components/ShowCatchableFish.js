@@ -3,7 +3,9 @@ import { getAllFish } from '../features/fish/fishSlice'
 import { useEffect } from 'react'
 
 // Notes for what to work on when API starts working again:
-//
+// Break this up into smaller components:
+// instead of this beings just for fish, make is usable for any category
+// Try to fix complexity errors
 
 const ShowCatchableFish = () => {
     const { allFish, isLoading } = useSelector((state) => state.fish)
